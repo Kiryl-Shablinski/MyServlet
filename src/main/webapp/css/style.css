@@ -1,0 +1,16 @@
+body{
+    background-color: bisque;
+    size: auto;
+}
+
+fieldset{
+    margin-bottom: 5px;
+    padding: 15px;
+    border: 0 none;
+}
+label{
+    width: 70px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 6px;
+}

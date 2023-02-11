@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyServletUserForm</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<form action="/MyServlet" method="post">
+    <fieldset>
+        <label for="number x"> Number x</label>
+    <input id="number x" type="number" name="x"><br>
+  <label for="number y"> Number y</label>
+    <input id="number y" type="number" name="y"><br>
+        <label for="operation">Operation</label>
+        <select id="operation" name="operation">
+            <option name="operation" value="+">+</option>
+            <option name="operation" value="-">-</option>
+            <option name="operation" value="*">x</option>
+            <option name="operation" value="/">/</option>
+        </select><br>
+        <label for="result"></label>
+        <input id="result" type="submit" value="Result">
+    </fieldset>
+</form>
+</body>
+</html>

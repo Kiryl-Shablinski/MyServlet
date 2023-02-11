@@ -5,23 +5,35 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.stream.Stream;
+
 
 
 @WebServlet(name = "MyServlet", value = "/MyServlet")
 public class MyServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
-        PrintWriter pw = response.getWriter();
-        String number = request.getParameter("number");
-       String result = increase(number);
-        pw.println("<html>");
-        pw.println("<h2>Increasing number: " + number + "<br>Result: "+ result + "</h2>");
-        pw.println("</html>");
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       String x = req.getParameter("x");
+        String y = req.getParameter("y");
+        String operation = req.getParameter("operation");
+
+        String result =  operation(x, y, operation);
+        PrintWriter pw = resp.getWriter();
+        pw.println("<html><h3> Result:</h3><h2>" + result + "</h2></html>");
     }
 
-    private String increase(String number){
-        return number !=null ? String.valueOf(Integer.parseInt(number) * 2) : null;
-    }
+        private String operation(String x, String y, String action){
+            int a = Integer.parseInt(x);
+            int b = Integer.parseInt(y);
+            switch (action){
+                case "+":
+                    return String.valueOf(a + b);
+                case "-":
+                    return String.valueOf(a - b);
+                case "*":
+                    return String.valueOf(a * b);
+                case "/":
+                    return String.format("%.2f",(double) a / b);
+            }
+            return null;
+        }
 }
