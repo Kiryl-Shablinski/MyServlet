@@ -6,10 +6,31 @@
     <servlet>
         <servlet-name>ServletMapping</servlet-name>
         <servlet-class>com.example.servlet.ServletMapping</servlet-class>
+        <init-param>
+            <param-name>message</param-name>
+            <param-value>HelloServletParameters</param-value>
+        </init-param>
     </servlet>
+    <servlet>
+        <servlet-name>ServletParameter</servlet-name>
+        <servlet-class>com.example.servlet.ServletParameter</servlet-class>
+        <init-param>
+            <param-name>message</param-name>
+            <param-value>HelloServletParameters</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletParameter</servlet-name>
+        <url-pattern>/parameter</url-pattern>
+    </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>ServletMapping</servlet-name>
         <url-pattern>/welcome</url-pattern>
     </servlet-mapping>
+
+    <context-param>
+        <param-name>message</param-name>
+        <param-value>HelloParameters</param-value>
+    </context-param>
 </web-app>
