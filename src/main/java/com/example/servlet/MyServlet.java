@@ -1,4 +1,4 @@
-package com.example.myservlet;
+package com.example.servlet;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -14,14 +14,15 @@ public class MyServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = req.getParameter("id");
         resp.setContentType("text/html");
-        PrintWriter pw = resp.getWriter();
-        if (id != null){
-                pw.println("<html> <h2>Id: " + id + "</h2></html>");
-        }else {
-            String path = "/NotFoundServlet";
-            ServletContext context = getServletContext();
-            RequestDispatcher dispatcher = context.getRequestDispatcher(path);
-            dispatcher.forward(req, resp);
-        }
+       try(PrintWriter pw = resp.getWriter()) {
+           if (id != null) {
+               pw.println("<html> <h2>Id: " + id + "</h2></html>");
+           } else {
+               String path = "/NotFoundServlet";
+               ServletContext context = getServletContext();
+               RequestDispatcher dispatcher = context.getRequestDispatcher(path);
+               dispatcher.forward(req, resp);
+           }
+       }
     }
 }
